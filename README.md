@@ -2,7 +2,7 @@
 1. root login *ROOT로 로그인하셔야 합니다.
 
 2. 스크립트 다운로드
-wget https://sharing.joongon.com/oci/install_gb.sh
+wget https://raw.githubusercontent.com/joongon/install_gb/master/install_gb.sh
 
 3. 스크립트 download 후에 실행권한 부여
 chmod +x install_gb.sh
