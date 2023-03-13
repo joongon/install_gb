@@ -54,7 +54,9 @@ if [ "$loginstat" = "y" ]; then
     if [ "$ans" = "y" ]; then
         read -p "Enter your Telegram Chat_id : " chat_id
         read -p "Enter your Telegram TOKEN : " token
-        echo -e "if [ '\$?' = 0 ]; then\ncurl -k -d 'chat_id="$chat_id"' --data-urlencode 'text=GeekBench has been executed successfully now.' https://api.telegram.org/bot"$token"/sendMessage\nfi" >> /etc/cron.daily/geekbench
+        read -p "Enter your Server's Name : " sname
+        echo -e "if [ '\$?' = 0 ]; then\ncurl -k -d 'chat_id="$chat_id"' --data-urlencode 'text=GeekBench in "$sname" has been loaded successfully now.' https://api.telegram.org/bot"$token"/sendMessage" >> /etc/cron.daily/geekbench
+        echo -e "elif [ '\$?' = 1 ]; then\ncurl -k -d 'chat_id="$chat_id"' --data-urlencode 'text=It's failed to load GeekBench in "$sname" now. Chek out your configuration.' https://api.telegram.org/bot"$token"/sendMessage\nfi" >> /etc/cron.daily/geekbench   
     else
         echo "no message function"
     fi
