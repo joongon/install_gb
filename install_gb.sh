@@ -12,6 +12,7 @@ echo -e "#                                                #"
 echo -e "==================================================\n\n\n"
 
 
+
 read -p "Warn: You need to login as ROOT to get things done properly before going further. y(yes/just enter) / n(no) : " loginstat
 
 [ -z "$loginstat" ] && loginstat="y"
