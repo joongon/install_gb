@@ -54,7 +54,7 @@ if [ "$loginstat" = "y" ]; then
     if [ "$ans" = "y" ]; then
         read -p "Enter your Telegram Chat_id : " chat_id
         read -p "Enter your Telegram TOKEN : " token
-        echo -e "if [ '\$?' = 0 ]; then\ncurl -k -d 'chat_id="{$chat_id}"' --data-urlencode 'text=GeekBench has been executed successfully now.' https://api.telegram.org/bot"{$token}"/sendMessage\nfi" >> /etc/cron.daily/geekbench
+        echo -e "if [ '\$?' = 0 ]; then\ncurl -k -d 'chat_id="$chat_id"' --data-urlencode 'text=GeekBench has been executed successfully now.' https://api.telegram.org/bot"$token"/sendMessage\nfi" >> /etc/cron.daily/geekbench
     else
         echo "no message function"
     fi
