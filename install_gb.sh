@@ -50,13 +50,13 @@ if [ "$loginstat" = "y" ]; then
 
     
     read -p "Do you want to receive a Telegram message every geekbench execution? if so, enter y(yes) or n(no/just ENTER) : " ans
-    [ -z "$ans" ]  && ans="n"
+    [ -z "$ans" ] && ans="n"
     if [ "$ans" = "y" ]; then
         read -p "Enter your Telegram Chat_id : " chat_id
         read -p "Enter your Telegram TOKEN : " token
         read -p "Enter your Server's Name : " sname
-        echo -e "result=$?; if [ $result = 0 ]; then\ncurl -k -d 'chat_id="$chat_id"' --data-urlencode 'text=GeekBench in "$sname" has been loaded successfully now.' https://api.telegram.org/bot"$token"/sendMessage" >> /etc/cron.daily/geekbench
-        echo -e "elif [ $result = 1 ]; then\ncurl -k -d 'chat_id="$chat_id"' --data-urlencode 'text=It has failed to load GeekBench in "$sname" now. Chek out your configuration.' https://api.telegram.org/bot"$token"/sendMessage\nfi" >> /etc/cron.daily/geekbench   
+        echo -e "result=$?; if [ $result = 0 ]; then\ncurl -k -d 'chat_id=$chat_id' --data-urlencode 'text=GeekBench in $sname has been loaded successfully now.' https://api.telegram.org/bot$token/sendMessage" >> /etc/cron.daily/geekbench
+        echo -e "elif [ $result = 1 ]; then\ncurl -k -d 'chat_id=$chat_id' --data-urlencode 'text=It has failed to load GeekBench in $sname now. Chek out your configuration.' https://api.telegram.org/bot$token/sendMessage\nfi" >> /etc/cron.daily/geekbench   
     else
         echo "no message function"
     fi
